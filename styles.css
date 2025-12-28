@@ -1,0 +1,380 @@
+/* ========================================
+   Base
+   ======================================== */
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body{
+  margin: 0;
+  font-family: "acumin-pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background: #f7f7f5;
+  color: #111;
+}
+
+/* ========================================
+   Layout
+   ======================================== */
+
+.layout{
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.main{
+  padding: 24px;
+}
+
+/* ========================================
+   NAV (shared)
+   ======================================== */
+
+.nav{
+  background: #f7f7f5;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+}
+
+.nav.is-faded{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-inner{
+  padding: 24px 18px;
+}
+
+.nav-top{
+  display: flex;
+  align-items: flex-start;
+}
+
+.brand{
+  display: inline-block;
+  text-decoration: none;
+  color: #111;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+.brand-sub{
+  font-size: 0.7rem;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: #111;
+  text-decoration: none;
+}
+
+.nav-menu{
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-link{
+  display: inline-block;
+  text-decoration: none;
+  color: #111;
+  font-size: 0.7rem;
+  padding: 6px 0;
+  opacity: 0.85;
+}
+
+.nav-link:hover{ opacity: 1; }
+
+.nav-link.is-active,
+.nav-link[aria-current="page"]{
+  text-decoration: underline;
+  opacity: 1;
+}
+
+/* “Information” link (same look/feel as nav) */
+.nav .js-info{
+  font-size: 0.7rem;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav .js-info:hover{ opacity: 0.75; }
+
+/* ========================================
+   Info page (shared)
+   ======================================== */
+
+.info-page{
+  position: fixed;
+  inset: 0;
+  background: #f7f7f5;
+  display: none;
+  z-index: 1200;
+}
+
+body.info-open .info-page{ display: block; }
+body.info-open{ overflow: hidden; }
+
+.info-page__inner{
+  padding: 16px;
+  line-height: 1.5;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.hp-label,
+.hp-list,
+.hp-note{
+  margin: 0 0 26px;
+}
+
+.hp-pdflink{ margin: 56px 0; }
+
+.hp-copyright{
+  margin-top: 60px;
+  font-size: 0.6rem;
+  font-weight: 100;
+  letter-spacing: 0.06em;
+}
+
+.info-page a{
+  color: inherit;
+  text-decoration: none;
+}
+.info-page a:hover{ opacity: 0.75; }
+
+.info-back{
+  display: inline-block;
+  margin-bottom: 32px;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.info-back:hover{ opacity: 0.7; }
+
+/* ========================================
+   Responsive nav layout (shared)
+   ======================================== */
+
+@media (min-width: 861px){
+  .nav{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 180px;
+    height: 100svh;
+    z-index: 1000;
+  }
+
+  .nav-inner{
+    height: 100svh;
+    overflow: auto;
+  }
+
+  .nav-top{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main{
+    padding: 24px;
+    padding-left: calc(180px + 24px);
+    transition: padding-left 0.25s ease;
+  }
+
+  .layout.is-nav-faded .main{
+    padding-left: 24px;
+  }
+}
+
+@media (max-width: 860px){
+  .nav{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .nav-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+  }
+
+  .nav-top{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-menu{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .main{ padding: 16px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================
+   Page-specific (project+modal) — below here is NOT “shared”
+   （使い回さない前提なら、将来別CSSに切り出せる）
+   ======================================== */
+
+/* ---- Modal ---- */
+
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+}
+.modal.is-open{ display: block; }
+
+.modal-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(239, 239, 239, 0.474);
+}
+
+.modal-panel{
+  position: absolute;
+  inset: 24px;
+  margin: auto;
+  background: #fff;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close{
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 18px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.modal-head{ padding: 22px 22px 12px 22px; }
+
+.modal-title{
+  font-size: 0.7rem;
+  margin-bottom: 6px;
+}
+
+.modal-meta{
+  font-size: .7rem;
+  opacity: 0.7;
+}
+
+.modal-body{
+  padding: 0 22px 22px 22px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  flex: 1;
+  scroll-snap-type: y mandatory;
+}
+
+.modal-stack{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-slide{
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+}
+
+.modal-slide img{
+  width: 86%;
+  height: auto;
+  display: block;
+}
+
+/* Scroll lock for modal */
+html.is-locked,
+body.is-locked{
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ---- Project grid / cards ---- */
+
+.grid{
+  display: grid;
+  gap: 90px 80px;
+  align-items: start;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 901px){
+  .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) and (orientation: landscape){
+  .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card figure{
+  margin: 0;
+  width: 200px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card .caption{
+  margin-top: 5px;
+  font-size: 0.7rem;
+}

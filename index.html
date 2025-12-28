@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, viewport-fit=cover"/>
+  <meta name="format-detection" content="telephone=no, email=no, address=no, date=no" />
+  <title>NATSUKI ONEYAMA — MAKE-UP ARTIST</title>
+  <meta name="description" content="Paris-based makeup artist. Selected works in beauty, fashion and editorial projects." />
+  <meta property="og:title" content="NATSUKI ONEYAMA — MAKE-UP ARTIST" />
+  <meta property="og:description" content="Paris-based makeup artist working across beauty, fashion and editorial projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://natsukioneyama.com/" />
+
+  <link rel="stylesheet" href="https://use.typekit.net/tar7poy.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="layout">
+
+    <!-- NAV -->
+    <header class="nav" data-nav>
+      <div class="nav-inner">
+        <div class="nav-top">
+          <a class="brand" href="index.html" aria-label="Home">Your Name</a>
+          <a class="brand-sub" href="index.html" aria-label="Home">Your Role</a>
+        </div>
+
+        <nav id="navMenu" class="nav-menu" aria-label="Primary">
+          <a class="nav-link is-active" href="index.html" aria-current="page">Selected Works</a>
+          <a class="nav-link" href="./overview/overview.html">Overview</a>
+          <a class="nav-link js-info" href="#" aria-controls="infoPage">Information</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Information page -->
+    <div class="info-page" id="infoPage" aria-hidden="true">
+      <div class="info-page__inner">
+        <a href="#" class="info-back js-info-close">Back</a>
+
+        <p class="hp-note">Your Name <br>Your Role</p>
+
+        <p class="hp-label">SELECTED WORKS / CLIENTS</p>
+        <p class="hp-list">
+          VOGUE <br>
+          NUMERO <br>
+          CHANEL <br>
+          etc..
+        </p>
+
+        <p class="hp-note">For all enquiries:<br><a href="">yourmail@gmail.com</a></p>
+        <p class="hp-note">Instagram:<br><a href="" target="_blank" rel="noopener noreferrer">@youraccount</a></p>
+
+        <p class="hp-copyright">(c)2025</p>
+      </div>
+    </div>
+
+    <!-- Page -->
+    <main class="main">
+      <!-- Project grid (これが必須) -->
+      <section class="grid" id="projectGrid" aria-label="Projects"></section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="projectModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="1"></div>
+
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Project">
+        <button class="modal-close" type="button" aria-label="Close" data-close="1">×</button>
+
+        <div class="modal-head">
+          <div class="modal-title" id="modalTitle"></div>
+          <div class="modal-meta" id="modalMeta"></div>
+        </div>
+
+        <div class="modal-body" id="modalBody" tabindex="0"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- どっちも必要（nav.jsがInfo担当、script.jsがproject+modal担当なら） -->
+  <script src="script.js" defer></script>
+</body>
+</html>
