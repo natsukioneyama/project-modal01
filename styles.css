@@ -286,6 +286,13 @@ body.info-open{ overflow: hidden; }
   background: transparent;
   border: 0;
   cursor: pointer;
+
+  color: #000;
+  -webkit-text-fill-color: #000; /* iOS対策として入れておくと安定 */
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .modal-head{ padding: 22px 22px 12px 22px; }
@@ -382,18 +389,4 @@ body.is-locked{
 
 
 
-/* iPhoneでリンク色が青に変わるのを強制停止 */
 
-#btnOverview,
-#btnOverview:link,
-#btnOverview:visited,
-#btnOverview:hover,
-#btnOverview:active {
-  color: #000 !important;
-  text-decoration: none !important;
-}
-
-/* タップ時の青いハイライトも消す */
-#btnOverview {
-  -webkit-tap-highlight-color: transparent;
-}
