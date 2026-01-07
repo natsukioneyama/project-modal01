@@ -378,3 +378,22 @@ body.is-locked{
   margin-top: 5px;
   font-size: 0.7rem;
 }
+
+
+
+
+/* iPhoneでリンク色が青に変わるのを強制停止 */
+
+#btnOverview,
+#btnOverview:link,
+#btnOverview:visited,
+#btnOverview:hover,
+#btnOverview:active {
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
+/* タップ時の青いハイライトも消す */
+#btnOverview {
+  -webkit-tap-highlight-color: transparent;
+}
